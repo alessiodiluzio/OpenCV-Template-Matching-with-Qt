@@ -29,12 +29,12 @@ Binary files will be generated in "build" directory.
     3. -src=source_image load source image from source_image path.
     4. -templ=template_image load template image from template_image path.
     5. -method=match_method set matching mode to match_method:
-        1 SQ_DIFF
-        2 SQ_DIFF_NORMED
-        3 CC_CORR
-        4 CC_CORR_NORMED
-        5 CC_COEFF_NORMED
-        6 CC_COEFF_NORMED
+        * 1 SQ_DIFF
+        * 2 SQ_DIFF_NORMED
+        * 3 CC_CORR
+        * 4 CC_CORR_NORMED
+        * 5 CC_COEFF_NORMED
+        * 6 CC_COEFF_NORMED
     6. -threshold=match_threshold: threshold for matching algorithm.
 
 
