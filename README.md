@@ -3,7 +3,7 @@
 With this application it is possible to use OpenCV Template Matching algorithms (https://docs.opencv.org/2.4/doc/tutorials/imgproc/histograms/template_matching/template_matching.html)
 through a pretty Qt GUI or command line.
 
-####Build
+### Build
 ```
 cmake CMakeList.txt
 ```
@@ -13,7 +13,7 @@ make
 
 Binary files will be generated in "build" directory.
 
-####Usage
+### Usage
 ```
 ./QtTemplateMatching [-help] [-nogui] [-src=source_image] [-templ=template_image] [-method=match_method] [-threshold=match_threshold]
 ```
