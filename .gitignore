@@ -1,4 +1,7 @@
-build
-images
+build/
+images/
+test_build/
 .DS_STORE
 .idea/
+cmake-build-debug/
+cmake-build-debug-coverage/

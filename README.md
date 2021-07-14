@@ -7,17 +7,15 @@ through a pretty Qt GUI or command line.
 
 * cmake
 * Qt 5
-* OpenCV 
+* OpenCV 4
 
 ### Build
 ```
-cmake CMakeList.txt
+cmake CMakeList.txt -DCMAKE_PREFIX_PATH="path/to/Qt5/cmake" -DOPENCV_INCLUDE_PATH="/path/to/opencv/include/opencv4/" -DOPENCV_LIB_PATH="/path/to/opencv4/lib"
 ```
 ```
 make
 ```
-
-Binary files will be generated in "build" directory.
 
 ### Usage
 ```

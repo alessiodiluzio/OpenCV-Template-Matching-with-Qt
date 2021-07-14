@@ -9,28 +9,30 @@ set(CMAKE_AUTOUIC ON)
 set(QT_VERSION 5)
 set(REQUIRED_LIBS Core Gui Widgets)
 set(REQUIRED_LIBS_QUALIFIED Qt5::Core Qt5::Gui Qt5::Widgets)
-set(CMAKE_PREFIX_PATH "/opt/homebrew/Cellar/qt@5/5.15.2/lib/cmake")
+set(suff ${CMAKE_SHARED_LIBRARY_SUFFIX})
 
 add_executable(${PROJECT_NAME} main.cpp mainwindow.cpp mainwindow.h mainwindow.ui matchingmanager.cpp matchingmanager.h resizableimagelabel.cpp resizableimagelabel.h)
 
 if (NOT CMAKE_PREFIX_PATH)
-    message(WARNING "CMAKE_PREFIX_PATH is not defined, you may need to set it "
-            "(-DCMAKE_PREFIX_PATH=\"path/to/Qt/lib/cmake\" or -DCMAKE_PREFIX_PATH=/usr/include/{host}/qt{version}/ on Ubuntu)")
-endif ()
+    message(FATAL_ERROR "CMAKE_PREFIX_PATH (path to Qt Cmake) is needed to compile this project.")
+endif()
 
-include_directories(/opt/homebrew/Cellar/opencv/4.5.3/include/opencv4/)
-target_link_libraries(${PROJECT_NAME} /opt/homebrew/Cellar/opencv/4.5.3/lib/libopencv_core.dylib /opt/homebrew/Cellar/opencv/4.5.3/lib/libopencv_imgcodecs.dylib /opt/homebrew/Cellar/opencv/4.5.3/lib/libopencv_highgui.dylib /opt/homebrew/Cellar/opencv/4.5.3/lib/libopencv_imgproc.dylib)
+if (NOT OPENCV_INCLUDE_PATH)
+    message(FATAL_ERROR "OPENCV_INCLUDE_PATH is not defined, you need it to compile this project.")
+endif()
+
+if (NOT OPENCV_LIB_PATH)
+    message(FATAL_ERROR "OPENCV_LIB_PATH is not defined, you need it to compile this project.")
+endif()
+
+include_directories(${OPENCV_INCLUDE_PATH})
+
+target_link_libraries(${PROJECT_NAME} ${OPENCV_LIB_PATH}/libopencv_core${suff}
+        ${OPENCV_LIB_PATH}/libopencv_imgcodecs${suff} ${OPENCV_LIB_PATH}/libopencv_highgui${suff}
+        ${OPENCV_LIB_PATH}/libopencv_imgproc${suff})
 
 find_package(Qt${QT_VERSION} COMPONENTS ${REQUIRED_LIBS} REQUIRED)
 target_link_libraries(${PROJECT_NAME} ${REQUIRED_LIBS_QUALIFIED})
 
-set(dir ${CMAKE_CURRENT_SOURCE_DIR}/build)
-set(EXECUTABLE_OUTPUT_PATH ${dir})
-set(LIBRARY_OUTPUT_PATH  ${dir})
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${dir})
-set(CMAKE_BUILD_FILES_DIRECTORY ${dir})
-set(CMAKE_BUILD_DIRECTORY ${dir})
-set(CMAKE_BINARY_DIR ${dir})
-set(CMAKE_CACHEFILE_DIR ${dir})
 
 
