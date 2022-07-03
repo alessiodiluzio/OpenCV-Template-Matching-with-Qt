@@ -3,6 +3,8 @@
 With this application it is possible to use OpenCV Template Matching algorithms (https://docs.opencv.org/2.4/doc/tutorials/imgproc/histograms/template_matching/template_matching.html)
 through a pretty Qt GUI or command line.
 
+![Example Usage](templatematching.png)
+
 ### Requirements
 
 * cmake
